@@ -3,21 +3,23 @@ const express = require('express');
 const Fruit = require("../models/Fruits.js")
 
 
-async function saveFruitInstance(req, res){
+async function saveFruitInstance(req, res) {
+    console.log(req.body)
     if (Object.keys(req.body).length === 0) { // Tester si la requete a un body
-        res.end()
+        res.send("Body is missing")
+    } else {
+        const data = new Fruit(req.body)
+        data.save()
+        res.send(JSON.stringify(data))
     }
-    const data = new Fruit(req.body)
-    data.save()
-    res.send(JSON.stringify(data))
 };
 
-async function getFruitCollection(req, res){
+async function getFruitCollection(req, res) {
 
     Fruit.find().then(data => {
-    console.log("DB 77: ", data)
-    res.send(JSON.stringify(data))
-})
+        console.log("DB 77: ", data)
+        res.send(JSON.stringify(data))
+    })
 }
 
 // router.get('/:key/:value', async (req, res) => {
@@ -26,11 +28,11 @@ async function getFruitCollection(req, res){
 //     const data = await Fruit.findOne({key : "pomme"}) // pourquoi ça marche pas??
 //     res.send(data)
 // });
-async function findFruitByPoids(req, res){
+async function findFruitByPoids(req, res) {
 
-    const data = await Fruit.findOne({poids : Number(req.params.value)})
+    const data = await Fruit.findOne({ poids: Number(req.params.value) })
     res.send(data)
 };
 
 // Exportation du routeur
-module.exports = {findFruitByPoids, saveFruitInstance, getFruitCollection}
+module.exports = { findFruitByPoids, saveFruitInstance, getFruitCollection }

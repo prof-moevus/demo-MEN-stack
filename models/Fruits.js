@@ -10,5 +10,4 @@ const FruitSchema = mongoose.Schema(
     }
 )
 
-
 module.exports = mongoose.model("fruits", FruitSchema)

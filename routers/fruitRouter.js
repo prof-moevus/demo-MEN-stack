@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const Fruit = require("../models/Fruits.js")
 const FruitCtrl = require("../controllers/Fruits.js")
 
 
