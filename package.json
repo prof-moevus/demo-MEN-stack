@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/prof-moevus/demo-MEN-stack#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^7.3.1",
+    "mongoose-unique-validator": "^4.0.0",
     "path": "^0.12.7"
   }
 }
