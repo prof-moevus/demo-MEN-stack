@@ -4,11 +4,14 @@ const cors = require('cors');
 const path = require('path')
 require('dotenv').config(); // Afin de charger le ficheir .env
 
-const routerV1 = require("./routers/apiV1Router.js")
+const routerV1 = require("./routers/apiV1Router")
+const routerAuth = require("./routers/authRouter")
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 // Connection à MongoDB
 mongoose.connect(process.env.ATLASDB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -21,7 +24,7 @@ mongoose.connect(process.env.ATLASDB_URI, { useNewUrlParser: true, useUnifiedTop
 
 
 app.get('/', (req, res) => {
-  res.send('Bonjour monde !');
+  res.redirect("/public/index.html")
 });
 
 app.use("/api/v1", routerV1)
