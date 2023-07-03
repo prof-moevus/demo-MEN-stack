@@ -7,8 +7,12 @@ require('dotenv').config(); // Afin de charger le ficheir .env
 const routerV1 = require("./routers/apiV1Router.js")
 
 const app = express();
+
+
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
+
 
 // Connection à MongoDB
 mongoose.connect(process.env.ATLASDB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
