@@ -28,6 +28,9 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/v1", routerV1)
+app.use("/api/auth", routerAuth)
+
+
 
 const port = process.env.SERVER_PORT || 4200
 app.listen(port, () => {
