@@ -8,11 +8,9 @@ const routerV1 = require("./routers/apiV1Router.js")
 
 const app = express();
 
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
-
 
 // Connection à MongoDB
 mongoose.connect(process.env.ATLASDB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -22,11 +20,6 @@ mongoose.connect(process.env.ATLASDB_URI, { useNewUrlParser: true, useUnifiedTop
   .catch((error) => {
     console.log("Erreur de connexion à MongoDB : " + error);
   });
-
-
-app.get('/', (req, res) => {
-  res.send('Bonjour monde !');
-});
 
 app.use("/api/v1", routerV1)
 
