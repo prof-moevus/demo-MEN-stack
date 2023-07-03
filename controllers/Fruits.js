@@ -4,7 +4,7 @@ const Fruit = require("../models/Fruits.js")
 
 
 async function saveFruitInstance(req, res) {
-    console.log(req.body)
+    // console.log(req.body)
     if (Object.keys(req.body).length === 0) { // Tester si la requete a un body
         res.send("Body is missing")
     } else {
@@ -17,7 +17,7 @@ async function saveFruitInstance(req, res) {
 async function getFruitCollection(req, res) {
 
     Fruit.find().then(data => {
-        console.log("DB 77: ", data)
+        // console.log("DB 77: ", data)
         res.send(JSON.stringify(data))
     })
 }
